@@ -1,0 +1,16 @@
+<div class="timer">
+  <h1>Timer: {{ time | async }}</h1>
+</div>
+
+  <div id="buttons">
+    <button
+      *ngIf="!(isRunning | async); else isRunningTemplate"
+      (click)="startTimer()"
+    >
+      {{ currentTime > 0 ? "Continue" : "Start" }}
+    </button>
+    <ng-template #isRunningTemplate
+      ><button (click)="stopTimer()">Stop</button></ng-template
+    >
+    <button (click)="resetTimer()">Reset</button>
+  </div>
